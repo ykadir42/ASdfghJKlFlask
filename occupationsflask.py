@@ -1,3 +1,12 @@
+'''
+Anish Shenoy, Jawad Kadir
+SoftDev1 pd 7
+HW#05 -- Jinja Tuning
+2017-09-26
+'''
+
+
+
 from flask import Flask, render_template
 import random
 app = Flask(__name__) #create instance of class
