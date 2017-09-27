@@ -19,19 +19,22 @@ def open_file(filename): #returns the contents of the occupations.csv file
 	return occupations
 
 
-def make_dict(): #makes a dictionary with occupations as keys and their respective percentages as values
+def make_dict(): #makes a dictionary with occupations as keys and their respective percentages + links in one list as values
 	occupations = open_file("data/occupations.csv")
 	occupation_list = occupations.split("\n") #makes list of each occupation with its percentage
 	occupations_dict={}
 	for i in occupation_list[1:-2]:
 		#if the occupation has a comma in it
 		if(i[0]=='"'):
-			#splitting by the quote and comma gets us the occupation and the percentage seperated
+			#splitting by the quote and comma gets us the occupation and the percentage + link seperated
 			occupation = i[1:].split('",')
-			occupations_dict[occupation[0]] = float(occupation[1])
+			#The Link and percentage are still joined by the comma so split those too
+			valAndLink = occupation[1].split(",")
+			occupations_dict[occupation[0]] =  [float(valAndLink[0]), valAndLink[1]]
 		else:
+			#Here, the split by comma seperates all 3
 			occupation = i.split(',')
-			occupations_dict[occupation[0]] = float(occupation[1])
+			occupations_dict[occupation[0]] = [float(occupation[1]), occupation[2]]
 	return occupations_dict
 
 '''
@@ -49,9 +52,10 @@ def random_occupation():
 	rand=random.random()*99.800000
 	sum_percents=0.0
 	for o in occupations_dict.keys():
-		if (rand >= sum_percents and rand<sum_percents+occupations_dict[o]):
+		#accsess the percentage with occupations_dict[<occupation>][0]
+		if (rand >= sum_percents and rand<sum_percents+occupations_dict[o][0]):
 			return o
-		sum_percents+=occupations_dict[o]
+		sum_percents+=occupations_dict[o][0]
 
 if __name__ == "__main__":
     app.debug = True
