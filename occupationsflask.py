@@ -1,5 +1,5 @@
 '''
-Anish Shenoy, Jawad Kadir
+Anish Shenoy, Jawadul Kadir
 SoftDev1 pd 7
 HW#05 -- Jinja Tuning
 2017-09-26
