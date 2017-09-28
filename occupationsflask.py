@@ -11,17 +11,24 @@ from flask import Flask, render_template
 import random
 app = Flask(__name__) #create instance of class
 
-#assign following fxn to run when
-#root route requested
+'''assign following fxn to run when
+root route requested'''
 @app.route("/")
 def link():
 	return '<a href="/occupations"> >>>CLICK HERE<<< </a>'
 
+''' 
+Creates HTML filled with table of occupations + percentages + links. Also Adds Random Occupation at bottom.
+title: title of page
+occupations = dictionary of occupations + [percentage, link]
+random_occupation = one random occupation selected from dict of occupations
+'''
 @app.route("/occupations")
 def test_tmplt():
 	return render_template('model_tmplt.html', title="Occupations", occupations = make_dict(), random_occupation = random_occupation())
 
-def open_file(filename): #returns the contents of the occupations.csv file
+#returns the contents of the occupations.csv file
+def open_file(filename): 
 	source = open(filename, 'rU')
 	occupations = source.read()
 	source.close()
