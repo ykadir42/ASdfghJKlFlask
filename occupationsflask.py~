@@ -23,7 +23,7 @@ random_occupation = one random occupation selected from dict of occupations
 '''
 @app.route("/occupations")
 def test_tmplt():
-	return render_template('model_tmplt.html', title="Occupations", occupations = occupations.make_dict(), random_occupation = occupations.random_occupation())
+	return render_template('model_tmplt.html', title="Occupations", occupations = make_dict(), random_occupation = random_occupation())
 
 if __name__ == "__main__":
     app.debug = True
