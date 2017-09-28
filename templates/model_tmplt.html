@@ -7,13 +7,24 @@
 		<h1> Here is a table of data containing information about occupations in the United States (courtesy of Mr. Brooks)</h1>
 		<h2> By: Anish Shenoy & Jawad Kadir </h2>
 		<table>
-		<tr> <th> Occupation </th> <th> Percentage </th> <th> Link </th> </tr>
-		{% for item in occupations %}
-			<tr> <td> {{ item }} </td> <td> {{ occupations.get(item)[0] }}% </td> <td><a href="{{ occupations.get(item)[1] }}"> More Info </a></td></tr>
-		{% endfor %}
+			<tr> 
+				<th> Occupation </th> 
+				<th> Percentage </th> 
+				<th> Link </th> 
+			</tr>
+			
+			{% for item in occupations %}
+				<tr>	
+					<td> {{ item }} </td> 
+					<td> {{ occupations.get(item)[0] }}% </td> 
+					<td> <a href="{{ occupations.get(item)[1] }}"> More Info </a> </td>
+				</tr>
+			{% endfor %}
 		</table>
 
-		<br><br>
+		<br>
+		<br>
+		
 		<h1>Random Occupation: {{ random_occupation }} <a href="{{ occupations.get(random_occupation)[1] }}"> (More Info) </a></h1>
 	</body>
 </html>
